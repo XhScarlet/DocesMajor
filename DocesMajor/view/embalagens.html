@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Doces da Major - Custo de Embalagens</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../style/styles.css" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#817478",
+                        "on-primary-fixed": "#2e1221",
+                        "surface-bright": "#f9f9f9",
+                        "primary-fixed": "#ffd8e7",
+                        "on-primary-container": "#765162",
+                        "surface-container-low": "#f3f3f4",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-container": "#794e2e",
+                        "on-tertiary-container": "#6e5560",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-primary-fixed-variant": "#5f3c4d",
+                        "tertiary": "#715763",
+                        "on-background": "#1a1c1c",
+                        "tertiary-fixed-dim": "#debecb",
+                        "on-tertiary-fixed": "#291620",
+                        "inverse-surface": "#2f3131",
+                        "surface-dim": "#dadada",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#edccda",
+                        "on-tertiary-fixed-variant": "#57404b",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#795465",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#fbdae8",
+                        "inverse-primary": "#e9bacd",
+                        "secondary-fixed": "#ffdcc5",
+                        "outline-variant": "#d2c3c7",
+                        "on-secondary-fixed": "#301400",
+                        "surface": "#f9f9f9",
+                        "secondary-container": "#fdc39a",
+                        "primary-fixed-dim": "#e9bacd",
+                        "primary": "#795465",
+                        "surface-container-high": "#e8e8e8",
+                        "on-surface-variant": "#4f4448",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e2e2e2",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#f4bb92",
+                        "secondary": "#805533",
+                        "primary-container": "#f8c8dc",
+                        "on-secondary-fixed-variant": "#653d1e",
+                        "background": "#f9f9f9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width": "1200px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["EB Garamond"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "headline-xl": ["EB Garamond"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-lg": ["EB Garamond"],
+                        "headline-lg-mobile": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen text-on-surface overflow-x-hidden">
+    <div class="fixed inset-0 pointer-events-none z-0" id="confetti-container"></div>
+    <header
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-full bg-white/70 backdrop-blur-xl border-b border-white/40 shadow-sm">
+        <h1 class="font-headline-lg text-headline-lg text-primary font-medium tracking-tight">Doces da Major</h1>
+        <nav class="hidden md:flex items-center gap-gutter">
+            <a class="text-on-surface-variant font-medium hover:text-primary transition-colors hover:scale-105 transition-transform duration-300"
+                href="receita.html">Custo da Receita</a>
+            <a class="text-primary font-bold border-b-2 border-primary pb-1 hover:scale-105 transition-transform duration-300"
+                href="embalagens.html">Custo de Embalagens</a>
+            <a class="text-on-surface-variant font-medium hover:text-primary transition-colors hover:scale-105 transition-transform duration-300"
+                href="precificacao.html">Precificação</a>
+            <a class="text-on-surface-variant font-medium hover:text-primary transition-colors hover:scale-105 transition-transform duration-300"
+                href="vendas.html">Gráficos Vendas</a>
+        </nav>
+        <button
+            class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md pulse-button transition-all">Limpar
+            Tudo</button>
+    </header>
+    <main class="relative z-10 pt-32 pb-20 px-margin-mobile md:px-margin-desktop max-w-[1400px] mx-auto fade-in">
+        <section class="text-center mb-16">
+            <h1 class="font-headline-xl text-headline-xl text-primary mb-4 md:text-[56px]">Cálculo de Embalagens</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Organize os custos finais dos seus doces artesanais. Calcule cada detalhe da apresentação para garantir
+                sua margem de lucro.
+            </p>
+        </section>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-gutter mb-20">
+            <div class="glass-card p-8 rounded-xl flex flex-col gap-6">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-3xl">filter_vintage</span>
+                    <h3 class="font-headline-md text-headline-md text-secondary">Forminha Interna</h3>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block font-label-md text-label-md text-on-surface-variant mb-2">Preço do
+                            Pacote</label>
+                        <input class="w-full bg-tertiary-container/30 border-none rounded-lg p-3 text-on-surface"
+                            id="V_EI" placeholder="R$ 0,00" type="number" />
+                    </div>
+                    <div>
+                        <label class="block font-label-md text-label-md text-on-surface-variant mb-2">Unidades no
+                            Pacote</label>
+                        <input class="w-full bg-tertiary-container/30 border-none rounded-lg p-3 text-on-surface"
+                            id="Q_EI" placeholder="Ex: 50" type="number" />
+                    </div>
+                    <button
+                        class="w-full mt-4 bg-primary text-white font-label-md py-3 rounded-full btn-pulse transition-all shadow-md">Salvar
+                        Cálculo</button>
+                </div>
+            </div>
+            <div class="glass-card p-8 rounded-xl flex flex-col gap-6">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-3xl">layers</span>
+                    <h3 class="font-headline-md text-headline-md text-secondary">Tapetinho Externo</h3>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block font-label-md text-label-md text-on-surface-variant mb-2">Preço do
+                            Pacote</label>
+                        <input class="w-full bg-tertiary-container/30 border-none rounded-lg p-3 text-on-surface"
+                            id="V_EE" placeholder="R$ 0,00" type="number" />
+                    </div>
+                    <div>
+                        <label class="block font-label-md text-label-md text-on-surface-variant mb-2">Unidades no
+                            Pacote</label>
+                        <input class="w-full bg-tertiary-container/30 border-none rounded-lg p-3 text-on-surface"
+                            id="Q_EE" placeholder="Ex: 100" type="number" />
+                    </div>
+                    <button
+                        class="w-full mt-4 bg-primary text-white font-label-md py-3 rounded-full btn-pulse transition-all shadow-md">Salvar
+                        Cálculo</button>
+                </div>
+            </div>
+            <div class="glass-card p-8 rounded-xl flex flex-col gap-6">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-3xl">featured_seasonal_and_gifts</span>
+                    <h3 class="font-headline-md text-headline-md text-secondary">Caixa de Presente</h3>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block font-label-md text-label-md text-on-surface-variant mb-2">Preço
+                            Unitário</label>
+                        <input class="w-full bg-tertiary-container/30 border-none rounded-lg p-3 text-on-surface"
+                            placeholder="R$ 0,00" type="number" />
+                    </div>
+                    <div>
+                        <label class="block font-label-md text-label-md text-on-surface-variant mb-2">Descrição</label>
+                        <input class="w-full bg-tertiary-container/30 border-none rounded-lg p-3 text-on-surface"
+                            placeholder="Ex: Caixa Kraft 4 Doces" type="text" />
+                    </div>
+                    <button
+                        class="w-full mt-4 bg-primary text-white font-label-md py-3 rounded-full btn-pulse transition-all shadow-md">Salvar
+                        Cálculo</button>
+                </div>
+            </div>
+            <div class="glass-card p-8 rounded-xl flex flex-col gap-6">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-3xl">label</span>
+                    <h3 class="font-headline-md text-headline-md text-secondary">Etiquetas</h3>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block font-label-md text-label-md text-on-surface-variant mb-2">Preço do
+                            Pacote</label>
+                        <input class="w-full bg-tertiary-container/30 border-none rounded-lg p-3 text-on-surface"
+                            id="V_E" placeholder="R$ 0,00" type="number" />
+                    </div>
+                    <div>
+                        <label class="block font-label-md text-label-md text-on-surface-variant mb-2">Unidades no
+                            Pacote</label>
+                        <input class="w-full bg-tertiary-container/30 border-none rounded-lg p-3 text-on-surface"
+                            id="Q_E" placeholder="Ex: 500" type="number" />
+                    </div>
+                    <button
+                        class="w-full mt-4 bg-primary text-white font-label-md py-3 rounded-full btn-pulse transition-all shadow-md">Salvar
+                        Cálculo</button>
+                </div>
+            </div>
+        </div>
+        <section>
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="font-headline-lg text-headline-lg text-primary">Embalagens Salvas</h2>
+                <div class="bg-secondary-container px-4 py-1 rounded-full text-on-secondary-container font-label-md">
+                    Total: 5 Itens
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card p-6 rounded-xl border-l-4 border-l-primary flex flex-col justify-between h-40">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="font-label-md text-on-surface-variant opacity-70">Forminha</span>
+                            <span
+                                class="material-symbols-outlined text-outline text-lg cursor-pointer hover:text-error transition-colors">delete</span>
+                        </div>
+                        <p class="font-headline-md text-on-surface mt-1">Seda Rosa Bebê</p>
+                    </div>
+                    <div class="flex items-end justify-between">
+                        <span class="text-primary font-bold text-2xl">R$ 0,15</span>
+                        <span class="text-xs font-label-sm text-outline">unid.</span>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-xl border-l-4 border-l-secondary flex flex-col justify-between h-40">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="font-label-md text-on-surface-variant opacity-70">Tapetinho</span>
+                            <span
+                                class="material-symbols-outlined text-outline text-lg cursor-pointer hover:text-error transition-colors">delete</span>
+                        </div>
+                        <p class="font-headline-md text-on-surface mt-1">Renda Transparente</p>
+                    </div>
+                    <div class="flex items-end justify-between">
+                        <span class="text-secondary font-bold text-2xl">R$ 0,08</span>
+                        <span class="text-xs font-label-sm text-outline">unid.</span>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-xl border-l-4 border-l-tertiary flex flex-col justify-between h-40">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="font-label-md text-on-surface-variant opacity-70">Caixa</span>
+                            <span
+                                class="material-symbols-outlined text-outline text-lg cursor-pointer hover:text-error transition-colors">delete</span>
+                        </div>
+                        <p class="font-headline-md text-on-surface mt-1">Kraft Floral M</p>
+                    </div>
+                    <div class="flex items-end justify-between">
+                        <span class="text-tertiary font-bold text-2xl">R$ 4,50</span>
+                        <span class="text-xs font-label-sm text-outline">unid.</span>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-xl border-l-4 border-l-primary flex flex-col justify-between h-40">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="font-label-md text-on-surface-variant opacity-70">Fita</span>
+                            <span
+                                class="material-symbols-outlined text-outline text-lg cursor-pointer hover:text-error transition-colors">delete</span>
+                        </div>
+                        <p class="font-headline-md text-on-surface mt-1">Cetim Marrom</p>
+                    </div>
+                    <div class="flex items-end justify-between">
+                        <span class="text-primary font-bold text-2xl">R$ 0,45</span>
+                        <span class="text-xs font-label-sm text-outline">unid.</span>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-xl border-l-4 border-l-secondary flex flex-col justify-between h-40">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="font-label-md text-on-surface-variant opacity-70">Etiqueta</span>
+                            <span
+                                class="material-symbols-outlined text-outline text-lg cursor-pointer hover:text-error transition-colors">delete</span>
+                        </div>
+                        <p class="font-headline-md text-on-surface mt-1">Etiqueta Personalizada</p>
+                    </div>
+                    <div class="flex items-end justify-between">
+                        <span class="text-secondary font-bold text-2xl">R$ 0,10</span>
+                        <span class="text-xs font-label-sm text-outline">unid.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer
+        class="w-full py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container dark:bg-surface-dim mt-20">
+        <div class="font-headline-md text-headline-md text-secondary">Doces da Major</div>
+        <p class="font-body-md text-body-md text-on-surface-variant">© 2024 Doces da Major - Calculadora Artesanal</p>
+        <div class="flex gap-6">
+            <a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Privacidade</a>
+            <a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Termos de
+                Uso</a>
+            <a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Suporte</a>
+        </div>
+    </footer>
+    <script src="../js/confetti.js"></script>
+    <script src="../js/embalagens.js"></script>
+    </body>
+
+</html>

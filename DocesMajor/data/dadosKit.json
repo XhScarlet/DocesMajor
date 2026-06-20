@@ -1,0 +1,26 @@
+[
+  {
+    "tipo": "Forminha Interna",
+    "nome": "Forminha Interna",
+    "custo": 0.1499,
+    "id": "1781528905089"
+  },
+  {
+    "tipo": "Tapetinho Externo",
+    "nome": "Tapetinho Externo",
+    "custo": 0.2125,
+    "id": "1781528907441"
+  },
+  {
+    "tipo": "Etiquetas",
+    "nome": "Etiquetas",
+    "custo": 0.024,
+    "id": "1781528945634"
+  },
+  {
+    "tipo": "Caixa de Presente",
+    "nome": "Caixa 4 Doces",
+    "custo": 2.5,
+    "id": "1781529208705"
+  }
+]

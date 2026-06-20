@@ -1,0 +1,142 @@
+:root {
+  --primary: #795465;
+  --primary-fixed: #ffd8e7;
+  --primary-fixed-dim: #e9bacd;
+  --primary-container: #f8c8dc;
+  --on-primary: #ffffff;
+  --on-primary-fixed: #2e1221;
+  --on-primary-container: #765162;
+
+  --secondary: #805533;
+  --secondary-fixed: #ffdcc5;
+  --secondary-fixed-dim: #f4bb92;
+  --secondary-container: #fdc39a;
+  --on-secondary: #ffffff;
+  --on-secondary-fixed: #301400;
+  --on-secondary-container: #794e2e;
+  --on-secondary-fixed-variant: #653d1e;
+
+  --tertiary: #715763;
+  --tertiary-fixed: #fbdae8;
+  --tertiary-fixed-dim: #debecb;
+  --tertiary-container: #edccda;
+  --on-tertiary: #ffffff;
+  --on-tertiary-fixed: #291620;
+  --on-tertiary-container: #6e5560;
+  --on-tertiary-fixed-variant: #57404b;
+
+  --background: #f9f9f9;
+  --surface: #f9f9f9;
+  --surface-bright: #f9f9f9;
+  --surface-dim: #dadada;
+  --surface-variant: #e2e2e2;
+  --surface-container-low: #f3f3f4;
+  --surface-container: #eeeeee;
+  --surface-container-high: #e8e8e8;
+  --surface-container-highest: #e2e2e2;
+  --surface-container-lowest: #ffffff;
+  --surface-tint: #795465;
+
+  --on-background: #1a1c1c;
+  --on-surface: #1a1c1c;
+  --on-surface-variant: #4f4448;
+  --inverse-surface: #2f3131;
+  --inverse-on-surface: #f0f1f1;
+
+  --outline: #817478;
+  --outline-variant: #d2c3c7;
+
+  --error: #ba1a1a;
+  --error-container: #ffdad6;
+  --on-error: #ffffff;
+  --on-error-container: #93000a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Be Vietnam Pro", sans-serif;
+  background-color: var(--background);
+  color: var(--on-background);
+  overflow-x: hidden;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(139, 94, 60, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(139, 94, 60, 0.12);
+}
+
+.page-enter {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.stagger-card {
+  opacity: 0;
+  animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.btn-pulse:hover,
+.pulse-button:hover {
+  animation: pulse 1.5s infinite;
+}
+
+input:focus {
+  outline: none !important;
+  background-color: white !important;
+  box-shadow: 0 0 0 3px rgba(121, 84, 101, 0.2) !important;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  vertical-align: middle;
+}

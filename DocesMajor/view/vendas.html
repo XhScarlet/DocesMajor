@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Doces da Major - Vendas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Be+Vietnam+Pro:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../style/styles.css" />
+    <style>
+        .stagger-1 {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            animation-delay: 0.3s;
+        }
+
+        .chart-bar {
+            transition: height 1s ease-out;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            pointer-events: none;
+            z-index: -1;
+            border-radius: 2px;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0.2;
+            }
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#debecb",
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f4",
+                        "surface-tint": "#795465",
+                        "secondary-fixed": "#ffdcc5",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary-fixed": "#301400",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#4f4448",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#f8c8dc",
+                        "on-tertiary-fixed-variant": "#57404b",
+                        "on-secondary-fixed-variant": "#653d1e",
+                        "outline-variant": "#d2c3c7",
+                        "primary-fixed-dim": "#e9bacd",
+                        "surface-bright": "#f9f9f9",
+                        "tertiary-fixed": "#fbdae8",
+                        "on-primary-fixed": "#2e1221",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2f3131",
+                        "primary": "#795465",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dadada",
+                        "on-secondary-container": "#794e2e",
+                        "secondary-container": "#fdc39a",
+                        "primary-fixed": "#ffd8e7",
+                        "secondary-fixed-dim": "#f4bb92",
+                        "tertiary": "#715763",
+                        "surface-container": "#eeeeee",
+                        "error": "#ba1a1a",
+                        "on-background": "#1a1c1c",
+                        "secondary": "#805533",
+                        "on-tertiary-fixed": "#291620",
+                        "on-primary-container": "#765162",
+                        "on-surface": "#1a1c1c",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e2e2e2",
+                        "outline": "#817478",
+                        "inverse-primary": "#e9bacd",
+                        "tertiary-container": "#edccda",
+                        "on-secondary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "on-primary-fixed-variant": "#5f3c4d",
+                        "on-tertiary-container": "#6e5560",
+                        "surface-variant": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "margin-desktop": "64px",
+                        "max-width": "1200px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Be Vietnam Pro"],
+                        "headline-md": ["EB Garamond"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["EB Garamond"],
+                        "headline-lg": ["EB Garamond"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-xl": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+    <!-- Confetti Container -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" id="confetti-container"></div>
+    <!-- TopNavBar -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-full bg-white/70 backdrop-blur-xl border-b border-white/40 shadow-sm">
+        <h1 class="font-headline-lg text-headline-lg text-primary font-medium tracking-tight">Doces da Major</h1>
+        <nav class="hidden md:flex items-center gap-gutter">
+            <a class="text-on-surface-variant font-medium hover:text-primary transition-colors hover:scale-105 transition-transform duration-300"
+                href="receita.html">Custo da Receita</a>
+            <a class="text-on-surface-variant font-medium hover:text-primary transition-colors hover:scale-105 transition-transform duration-300"
+                href="embalagens.html">Custo de Embalagens</a>
+            <a class="text-on-surface-variant font-medium hover:text-primary transition-colors hover:scale-105 transition-transform duration-300"
+                href="precificacao.html">Precificação</a>
+            <a class="text-primary font-bold border-b-2 border-primary pb-1 hover:scale-105 transition-transform duration-300"
+                href="graficos.html">Gráficos Vendas</a>
+        </nav>
+        <button
+            class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md pulse-button transition-all">Limpar
+            Tudo</button>
+    </header>
+    <main class="relative z-10 pt-28 pb-16 px-margin-mobile md:px-margin-desktop max-w-[1400px] mx-auto">
+        <!-- Header Section -->
+        <section class="mb-12 fade-in">
+            <h2 class="font-headline-xl text-headline-xl text-primary mb-2">Painel de Vendas</h2>
+            <p class="text-body-lg text-on-surface-variant max-w-2xl">Acompanhe o desempenho do seu ateliê artesanal com
+                clareza e doçura. Visualize tendências e lucros para crescer seu negócio.</p>
+        </section>
+        <!-- KPI Cards Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-12">
+            <!-- Total Sales -->
+            <div class="glass-card p-8 rounded-3xl flex flex-col gap-2 fade-in stagger-1">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="material-symbols-outlined text-secondary text-3xl"
+                        style="font-variation-settings: 'FILL' 1;">payments</span>
+                </div>
+                <h3 class="text-on-surface-variant font-label-md uppercase tracking-widest">Vendas Totais</h3>
+                <p id="kpi-vendas" class="font-headline-lg text-headline-lg text-primary">R$ 0,00</p>
+                <p class="text-label-sm text-outline">Período: Histórico Geral</p>
+            </div>
+            <!-- Total Profit -->
+            <div class="glass-card p-8 rounded-3xl flex flex-col gap-2 fade-in stagger-2">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="material-symbols-outlined text-secondary text-3xl"
+                        style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                </div>
+                <h3 class="text-on-surface-variant font-label-md uppercase tracking-widest">Lucro Total</h3>
+                <p id="kpi-lucro" class="font-headline-lg text-headline-lg text-secondary">R$ 0,00</p>
+                <p id="kpi-margem" class="text-label-sm text-outline">Margem média: 0.0%</p>
+            </div>
+            <!-- Average Ticket -->
+            <div class="glass-card p-8 rounded-3xl flex flex-col gap-2 fade-in stagger-3">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="material-symbols-outlined text-secondary text-3xl"
+                        style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+                </div>
+                <h3 class="text-on-surface-variant font-label-md uppercase tracking-widest">Ticket Médio</h3>
+                <p id="kpi-ticket" class="font-headline-lg text-headline-lg text-tertiary">R$ 0,00</p>
+                <p class="text-label-sm text-outline">Por caixa vendida</p>
+            </div>
+        </section>
+        <!-- Charts Layout (Bento Grid Style) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+            <!-- Most Sold Flavors (Donut Chart Simulation) -->
+            <div class="glass-card p-8 rounded-3xl flex flex-col fade-in stagger-2">
+                <h3 class="font-headline-md text-headline-md text-primary mb-1">Sabores Favoritos</h3>
+                <p class="text-body-md text-on-surface-variant mb-8">Distribuição por volume</p>
+                <div class="relative flex-1 flex items-center justify-center min-h-[200px]">
+                    <div id="donut-circle" class="w-48 h-48 rounded-full border-[16px] border-tertiary-container relative flex items-center justify-center"
+                        style="background: conic-gradient(var(--tw-color-primary) 0% 100%, transparent 100%);">
+                        <div
+                            class="w-32 h-32 rounded-full bg-white flex flex-col items-center justify-center shadow-inner">
+                            <span id="donut-percent" class="font-headline-md text-primary">0%</span>
+                            <span id="donut-name" class="text-label-sm text-outline text-center px-2">Sem Dados</span>
+                        </div>
+                    </div>
+                </div>
+                <ul id="donut-list" class="mt-8 space-y-3">
+                    <!-- Flavors will be populated here -->
+                </ul>
+            </div>
+            <!-- Recent Highlights Image/Card -->
+            <div class="lg:col-span-2 glass-card overflow-hidden grid md:grid-cols-2 rounded-3xl fade-in stagger-3">
+                <div class="p-8 flex flex-col justify-center">
+                    <h3 class="font-headline-md text-headline-md text-primary mb-4">Precisando falar com o Suporte?</h3>
+                    <p class="text-body-md text-on-surface-variant mb-6">Clique no botão abaixo para abrir o chat de suporte.</p>
+                    <div class="flex gap-4">
+                        <a href="https://wa.me/5511914558302" target="_blank"
+                            class="bg-secondary text-white px-6 py-2 rounded-full font-label-md hover:opacity-90 transition-all text-center inline-block">Falar
+                            com o Suporte</a>
+                    </div>
+                </div>
+                <div class="relative min-h-[300px]">
+                    <img class="absolute inset-0 w-full h-full object-cover"
+                        data-alt="A beautifully presented gift box filled with artisanal chocolate brigadeiros of various textures and flavors, including gold flakes and chopped nuts. The scene is shot in a bright, airy confectionery studio with a soft-focus background of pastel pink ribbons and delicate baking tools. The lighting is warm and inviting, emphasizing the glossy texture of the chocolates and the premium quality of the packaging."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs9jklYG79CITMnSYbe3mQoAzE0qMQXL1WZioK0fVJvaNSVa0DHHaETLfw8d78LSmVQA-rJu3PjXWMExcAdHryzoz57c17qoChDl1t4sgGH-tPG8q4P38TznR57XOYR-6s6AXwGCQ2vDz1VZ7ScAz83t6l1Svn3iMRKv-1RWKqEffli3rnX7kjGZoTVaahLqKhmfVz7uxDuOMlIhbDkm40nPD_pnjakXCvcwZ8YP1NsBSaeqTOuifBj1OGlwcBigP_9OpzE4CAtDU" />
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="w-full py-8 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-low relative z-10">
+        <div class="flex flex-col items-center md:items-start">
+            <span class="font-headline-md text-headline-md text-secondary">Doces da Major</span>
+            <p class="text-body-md text-on-surface-variant">© 2024 Doces da Major - Calculadora Artesanal</p>
+        </div>
+        <nav class="flex gap-6">
+            <a class="text-on-surface-variant hover:text-primary transition-colors duration-300"
+                href="#">Privacidade</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Termos de
+                Uso</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Suporte</a>
+        </nav>
+    </footer>
+    <script src="confetti.js"></script>
+    <script src="../js/vendas.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const bars = document.querySelectorAll(".chart-bar");
+            bars.forEach((bar, index) => {
+                const targetHeight = bar.style.height;
+                bar.style.height = "0";
+                setTimeout(() => {
+                    bar.style.height = targetHeight;
+                }, 400 + (index * 100));
+            });
+        });
+    </script>
+</body>
+
+</html>
