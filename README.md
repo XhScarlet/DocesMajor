@@ -36,6 +36,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina:
 
 ## 🔧 Como Instalar e Rodar o Projeto
 
+Clique no link: (https://docesmajor.onrender.com/) ou
 Siga os passos abaixo para executar o sistema localmente na sua máquina:
 
 ### 1. Clonar ou Baixar o Repositório
