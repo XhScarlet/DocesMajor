@@ -1,6 +1,6 @@
 # 🍫 Doces da Major - Sistema de Gestão e Precificação
 
-Sistema de gestão e precificação desenvolvido sob medida para doces artesanais e ateliês de confeitaria. O projeto auxilia no cálculo preciso do custo de receitas, precificação de embalagens, composição de caixas de doces, controle de vendas e análise de lucratividade por meio de dashboards integrados.
+Sistema de gestão e precificação desenvolvido sob medida para doces artesanais e ateliês de confeitaria. O projeto auxilia no cálculo preciso do custo de receitas, precificação de embalagens, composição de caixas de doces, controle de vendas e análise de lucratividade por meio de dashboards integrados. 
 
 ---
 
@@ -74,6 +74,10 @@ node server.js
 
 Após rodar o comando, o servidor estará ativo. Abra o seu navegador de preferência e digite o endereço local (geralmente `http://localhost:3000` ou a porta configurada no seu arquivo `server.js`).
 
+---
+## 6. Contribuições:
+https://github.com/XhScarlet : Desenvolvedora Full-Stack
+https://github.com/murilosilvsilva-jpg : Desenvolvedor por trás da lógica do Back-end
 ---
 
 ## 💾 Estrutura de Armazenamento (Banco de Dados JSON)
