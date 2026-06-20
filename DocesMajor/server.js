@@ -234,6 +234,8 @@ const server = http.createServer(async (req, res) => {
         let filePath = req.url;
         if (filePath === '/') {
             filePath = '/view/receita.html';
+        } else if (filePath.endsWith('.html') && !filePath.startsWith('/view/')) {
+            filePath = '/view' + filePath;
         }
         
         // Remove query parameters e impede path traversal

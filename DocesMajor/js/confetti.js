@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btnLimpar.addEventListener('click', async () => {
           if (confirm('Tem certeza que deseja apagar todos os dados salvos (receitas, embalagens e caixas)? Essa ação não pode ser desfeita.')) {
               try {
-                  const res = await fetch('http://localhost:3000/limpar-tudo', { method: 'DELETE' });
+                  const res = await fetch('/limpar-tudo', { method: 'DELETE' });
                   if (res.ok) {
                       alert('Todos os dados foram apagados com sucesso!');
                       location.reload();

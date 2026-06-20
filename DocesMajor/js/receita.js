@@ -5,7 +5,7 @@ const DataManager = {
     },
     saveFlavorWithExtras: async function(flavorData) {
         try {
-            const response = await fetch('http://localhost:3000/receitas', {
+            const response = await fetch('/receitas', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ const DataManager = {
     },
     loadFlavors: async function() {
         try {
-            const response = await fetch('http://localhost:3000/receitas');
+            const response = await fetch('/receitas');
             if (response.ok) {
                 const receitas = await response.json();
                 DataManager.renderFlavors(receitas);
@@ -143,7 +143,7 @@ const DataManager = {
     deleteFlavor: async function(id) {
         if (!id) return;
         try {
-            const response = await fetch(`http://localhost:3000/receitas?id=${id}`, {
+            const response = await fetch(`/receitas?id=${id}`, {
                 method: 'DELETE'
             });
             if (response.ok) {

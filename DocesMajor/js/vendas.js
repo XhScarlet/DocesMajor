@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function loadVendasData() {
     try {
-        const res = await fetch('http://localhost:3000/caixas');
+        const res = await fetch('/caixas');
         if (!res.ok) return;
         const caixas = await res.json();
         

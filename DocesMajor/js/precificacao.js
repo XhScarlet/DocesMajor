@@ -4,15 +4,15 @@ const DataManager = {
     caixas: [],
     loadData: async function() {
         try {
-            const resReceitas = await fetch('http://localhost:3000/receitas');
+            const resReceitas = await fetch('/receitas');
             if (resReceitas.ok) {
                 this.receitas = await resReceitas.json();
             }
-            const resKits = await fetch('http://localhost:3000/kits');
+            const resKits = await fetch('/kits');
             if (resKits.ok) {
                 this.kits = await resKits.json();
             }
-            const resCaixas = await fetch('http://localhost:3000/caixas');
+            const resCaixas = await fetch('/caixas');
             if (resCaixas.ok) {
                 this.caixas = await resCaixas.json();
             }
@@ -26,7 +26,7 @@ const DataManager = {
     },
     salvarPrecificacao: async function(caixa, silent = false) {
         try {
-            const response = await fetch('http://localhost:3000/caixas', {
+            const response = await fetch('/caixas', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(caixa)
@@ -43,7 +43,7 @@ const DataManager = {
     },
     deletarCaixa: async function(id) {
         try {
-            const response = await fetch(`http://localhost:3000/caixas?id=${id}`, {
+            const response = await fetch(`/caixas?id=${id}`, {
                 method: 'DELETE'
             });
             if (response.ok) {

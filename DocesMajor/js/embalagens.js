@@ -28,7 +28,7 @@ const PACKAGING_TYPES = {
         const DataManager = {
             getAllPackagings: async function() {
                 try {
-                    const response = await fetch('http://localhost:3000/kits');
+                    const response = await fetch('/kits');
                     if (response.ok) {
                         const kits = await response.json();
                         const container = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4.gap-6');
@@ -44,7 +44,7 @@ const PACKAGING_TYPES = {
             },
             savePackaging: async function(tipo, nome, custo) {
                 try {
-                    const response = await fetch('http://localhost:3000/kits', {
+                    const response = await fetch('/kits', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ tipo, nome, custo })
@@ -58,7 +58,7 @@ const PACKAGING_TYPES = {
             },
             deletePackaging: async function(id) {
                 try {
-                    const response = await fetch(`http://localhost:3000/kits?id=${id}`, {
+                    const response = await fetch(`/kits?id=${id}`, {
                         method: 'DELETE'
                     });
                     if (response.ok) {
