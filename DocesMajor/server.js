@@ -10,7 +10,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const MASTER_KEY = "$2a$10$9nH4A0CHK37myNadQfIDSeuAZMuz0WCuTlgJ9Mb8/Vk3dcFAqjw2O";
+const MASTER_KEY = process.env.JSONBIN_MASTER_KEY;
 const BINS = {
     receitas: "6a3715a2f5f4af5e291627ab",
     kits: "6a371548f5f4af5e29162645",
