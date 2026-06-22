@@ -79,6 +79,7 @@ Após rodar o comando, o servidor estará ativo. Abra o seu navegador de prefer�
 ## 6. Contribuições:
 
 https://github.com/XhScarlet : Desenvolvedora Full-Stack
+
 https://github.com/murilosilvsilva-jpg : Desenvolvedor por trás da lógica do Back-end
 ---
 
